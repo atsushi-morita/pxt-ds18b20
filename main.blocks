@@ -1,4 +1,1 @@
-<xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="pxt-on-start"></block>
-  <block type="device_forever"></block>
-</xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="device_forever" id="dk%ymG~@o0f,R@N`$]]:" x="0" y="0"/><block type="device_button_event" id=":r^a79a@*DF2qCBkoe-c" x="13" y="138"><field name="NAME">Button.A</field><statement name="HANDLER"><block type="device_show_number" id="#hTD1#Xsd![Q(S#=LzSV"><value name="number"><block type="math_js_round" id="n*/:3O92n8VVw{pNydTT"><field name="OP">round</field><value name="ARG0"><shadow type="math_number" id="|nilbpzT8mZC|dtyP0*^"><field name="NUM">0</field></shadow><block type="typescript_expression" id="lm25D{FRpB:8syiDBTl*" editable="false"><field name="EXPRESSION">get_temperature()</field></block></value></block></value></block></statement></block></xml>
