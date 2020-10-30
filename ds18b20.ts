@@ -37,21 +37,36 @@ function writeByte(byte:number){
     }
 }
 
-function readBit() : number  {
+function readBit() : NumberFormat.UInt8BE  {
+    let b:number 
+    pins.digitalWritePin(DigitalPin.P0, 0)
+    pins.digitalWritePin(DigitalPin.P0, 1)
+  //  control.waitMicros(5)
+ //   pins.digitalWritePin(DigitalPin.P1, 1)
+    b = pins.digitalReadPin(DigitalPin.P0)
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    control.waitMicros(100)
+ //   pins.digitalWritePin(DigitalPin.P0, 1)
+
+    return b;
+
+/*
     pins.digitalWritePin(DigitalPin.P0, 0)
     control.waitMicros(1)
-    pins.digitalReadPin(DigitalPin.P0)
+//    pins.digitalReadPin(DigitalPin.P0)
     control.waitMicros(10)
     let b = pins.digitalReadPin(DigitalPin.P0)
     control.waitMicros(100)
-    pins.digitalWritePin(DigitalPin.P0, 1)
+    //pins.digitalWritePin(DigitalPin.P0, 1)
     return b;
+    */
 }
 
-function readByte():number {
-    let byte = 0
+function readByte():NumberFormat.UInt8BE {
+    let byte:NumberFormat.UInt8BE = 0
     for ( let i = 0; i<8; i++){
-        byte = byte | readBit() << i;
+        byte = byte | (readBit() << i)
     }
     return byte
 }
@@ -75,8 +90,9 @@ function get_temperature():number {
     init()
     writeByte(0xcc)
     writeByte(0xbe)
-    let b1 = readByte()
-    let b2 = readByte()
-    let temp:number = (b2 << 8 | b1)
-    return temp / 16
+    let b1:NumberFormat.UInt8BE = readByte()
+    let b2:NumberFormat.UInt8BE = readByte()
+    return b1
+//    let temp:NumberFormat.UInt16BE = (b2 << 8 | b1)
+//    return temp / 16.0
 }
